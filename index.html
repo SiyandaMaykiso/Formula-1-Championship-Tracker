@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="formula1App">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formula 1 Championship Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="MainController">
+
+  <h1>Formula 1 Championship Tracker</h1>
+
+  <table>
+    <tr>
+      <th>Position</th>
+      <th>Driver</th>
+      <th>Points</th>
+    </tr>
+    <tr ng-repeat="driver in drivers">
+      <td>{{$index + 1}}</td>
+      <td>{{driver.Driver.givenName}} {{driver.Driver.familyName}}</td>
+      <td>{{driver.points}}</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>
