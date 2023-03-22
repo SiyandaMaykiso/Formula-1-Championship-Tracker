@@ -1,32 +1,37 @@
-var app = angular.module("f1TrackerApp", []);
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-app.controller("f1TrackerCtrl", function($scope, $http) {
-    // API endpoint URLs
-    var driversStandingsURL = 'http://ergast.com/api/f1/current/driverStandings';
-    var constructorsStandingsURL = 'http://ergast.com/api/f1/current/constructorStandings';
+interface DriverStandings {
+  driver: string;
+  team: string;
+  points: number;
+}
 
-    // Initialize standings arrays
-    $scope.driversStandings = [];
-    $scope.constructorsStandings = [];
+interface ConstructorStandings {
+  team: string;
+  points: number;
+}
 
-    // Get drivers championship standings
-    $http.get(driversStandingsURL).then(function(response) {
-        var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-        for (var i = 0; i < standingsData.length; i++) {
-            var position = standingsData[i].position;
-            var driverName = standingsData[i].Driver.givenName + " " + standingsData[i].Driver.familyName;
-            var points = standingsData[i].points;
-            $scope.driversStandings.push({position: position, driverName: driverName, points: points});
-        }
-    });
-    // Get constructors championship standings
-    $http.get(constructorsStandingsURL).then(function(response) {
-        var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        for (var i = 0; i < standingsData.length; i++) {
-            var position = standingsData[i].position;
-            var constructorName = standingsData[i].Constructor.name;
-            var points = standingsData[i].points;
-            $scope.constructorsStandings.push({position: position, constructorName: constructorName, points: points});
-        }
-    });
-});
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  driverStandings: DriverStandings[];
+  constructorStandings: ConstructorStandings[];
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get<DriverStandings[]>('http://ergast.com/api/f1/current/driverStandings')
+      .subscribe(data => {
+        this.driverStandings = data;
+      });
+
+    this.http.get<ConstructorStandings[]>('http://ergast.com/api/f1/current/constructorStandings')
+      .subscribe(data => {
+        this.constructorStandings = data;
+      });
+  }
+}
