@@ -10,7 +10,7 @@ To run the application, you will need:
 
 A modern web browser with JavaScript enabled
 
-##Usage
+## Usage
 
 Once the application is running, you can view the current championship standings in the table displayed on the page. The table includes columns for the driver's position, name, team, nationality, points, and wins.
 
