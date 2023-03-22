@@ -19,8 +19,14 @@ app.controller("f1TrackerCtrl", function($scope, $http) {
             $scope.driversStandings.push({position: position, driverName: driverName, points: points});
         }
     });
-
     // Get constructors championship standings
     $http.get(constructorsStandingsURL).then(function(response) {
         var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        for (var i = 0; i < standingsData
+        for (var i = 0; i < standingsData.length; i++) {
+            var position = standingsData[i].position;
+            var constructorName = standingsData[i].Constructor.name;
+            var points = standingsData[i].points;
+            $scope.constructorsStandings.push({position: position, constructorName: constructorName, points: points});
+        }
+    });
+});
