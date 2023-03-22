@@ -7,23 +7,12 @@ app.controller("MainController", function($scope, $http) {
   });
 });
 
-const apiUrl = "https://ergast.com/api/f1/current/constructorStandings.json";
-
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    const standings = data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-    
-    const table = document.querySelector("#constructor-standings tbody");
-    for (let i = 0; i < standings.length; i++) {
-      const row = table.insertRow(i);
-      const position = row.insertCell(0);
-      const constructor = row.insertCell(1);
-      const points = row.insertCell(2);
-      
-      position.textContent = standings[i].position;
-      constructor.textContent = standings[i].Constructor.name;
-      points.textContent = standings[i].points;
-    }
-  })
-  .catch(error => console.error(error));
+angular.module("myApp", [])
+  .controller("standingsController", function($scope, $http) {
+    const apiUrl = "https://ergast.com/api/f1/current/constructorStandings.json";
+    $http.get(apiUrl)
+      .then(response => {
+        $scope.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+      })
+      .catch(error => console.error(error));
+  });
