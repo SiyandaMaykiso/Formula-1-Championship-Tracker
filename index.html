@@ -28,4 +28,26 @@
 
 </body>
 
+<title>Formula 1 Constructor Standings</title>
+</head>
+<body ng-controller="standingsController">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Constructor</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="standing in standings">
+        <td>{{ standing.position }}</td>
+        <td>{{ standing.Constructor.name }}</td>
+        <td>{{ standing.points }}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+
 </html>
