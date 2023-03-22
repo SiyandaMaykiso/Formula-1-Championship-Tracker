@@ -1,4 +1,3 @@
-
 var app = angular.module("f1TrackerApp", []);
 
 app.controller("f1TrackerCtrl", function($scope, $http) {
@@ -19,7 +18,10 @@ app.controller("f1TrackerCtrl", function($scope, $http) {
             var points = standingsData[i].points;
             $scope.driversStandings.push({position: position, driverName: driverName, points: points});
         }
+    }, function(error) {
+        console.error("Error fetching drivers championship standings: ", error);
     });
+
     // Get constructors championship standings
     $http.get(constructorsStandingsURL).then(function(response) {
         var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
@@ -29,5 +31,7 @@ app.controller("f1TrackerCtrl", function($scope, $http) {
             var points = standingsData[i].points;
             $scope.constructorsStandings.push({position: position, constructorName: constructorName, points: points});
         }
+    }, function(error) {
+        console.error("Error fetching constructors championship standings: ", error);
     });
 });
