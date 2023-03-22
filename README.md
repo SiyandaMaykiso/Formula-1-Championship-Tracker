@@ -1,6 +1,8 @@
 # Formula-1-Championship-Tracker
 I have coded a Formula 1 Championship Tracker that uses HTML, CSS, and AngularJS code for this frontend application. It tracks the Formula 1 championship using a Formula 1 API. This application is designed to display the current standings for the Formula 1 Championship.
 
+### Deployed Link: https://siyandamaykiso.github.io/Formula-1-Championship-Tracker/
+
 ##Purpose
 
 This application is ideal for those who are busy and on the go. The championship tracker updates after each race and allows the user to stay updated on the championship
