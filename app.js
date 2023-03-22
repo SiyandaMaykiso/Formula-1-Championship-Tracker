@@ -7,7 +7,7 @@ app.controller("MainController", function($scope, $http) {
 });
 
 app.controller("StandingsController", function($scope, $http) {
-  const apiUrl = "https://ergast.com/api/f1/current/constructorStandings.json";
+  const apiUrl = "http://ergast.com/api/f1/current/constructorStandings";
   $http.get(apiUrl)
     .then(response => {
       $scope.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
