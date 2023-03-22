@@ -1,84 +1,24 @@
-/* Drivers Championship Standings */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-#driver-standings {
+h1, h2 {
+    text-align: center;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  #driver-standings th,
-  #driver-standings td {
+}
+
+th, td {
+    text-align: left;
     padding: 8px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  #driver-standings th {
-    background-color: #f1f1f1;
-  }
-  
-  #driver-standings th:first-child,
-  #driver-standings td:first-child {
-    width: 10%;
-  }
-  
-  #driver-standings th:nth-child(2),
-  #driver-standings td:nth-child(2) {
-    width: 70%;
-  }
-  
-  #driver-standings th:last-child,
-  #driver-standings td:last-child {
-    width: 20%;
-  }
-  
-  #driver-standings tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  #driver-standings tr:hover {
+}
+
+th {
     background-color: #ddd;
-  }
-  
-  
-  /* Constructors Championship Standings */
-  
-  #constructor-standings {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  #constructor-standings th,
-  #constructor-standings td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  #constructor-standings th {
-    background-color: #f1f1f1;
-  }
-  
-  #constructor-standings th:first-child,
-  #constructor-standings td:first-child {
-    width: 10%;
-  }
-  
-  #constructor-standings th:nth-child(2),
-  #constructor-standings td:nth-child(2) {
-    width: 70%;
-  }
-  
-  #constructor-standings th:last-child,
-  #constructor-standings td:last-child {
-    width: 20%;
-  }
-  
-  #constructor-standings tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  #constructor-standings tr:hover {
-    background-color: #ddd;
-  }
+    font-weight: bold;
+}
