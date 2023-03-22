@@ -2,8 +2,8 @@ var app = angular.module("f1TrackerApp", []);
 
 app.controller("f1TrackerCtrl", function($scope, $http) {
     // API endpoint URLs
-    var driversStandingsURL = "https://ergast.com/api/f1/current/driverStandings.json";
-    var constructorsStandingsURL = "https://ergast.com/api/f1/current/constructorStandings.json";
+    var driversStandingsURL = "http://ergast.com/api/f1/current/driverStandings";
+    var constructorsStandingsURL = "http://ergast.com/api/f1/current/constructorStandings";
 
     // Initialize standings arrays
     $scope.driversStandings = [];
