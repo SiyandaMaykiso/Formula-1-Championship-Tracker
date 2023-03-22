@@ -1,4 +1,3 @@
-
 var app = angular.module("formula1App", []);
 
 app.controller("MainController", function($scope, $http) {
@@ -7,12 +6,11 @@ app.controller("MainController", function($scope, $http) {
   });
 });
 
-angular.module("myApp", [])
-  .controller("standingsController", function($scope, $http) {
-    const apiUrl = "https://ergast.com/api/f1/current/constructorStandings.json";
-    $http.get(apiUrl)
-      .then(response => {
-        $scope.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-      })
-      .catch(error => console.error(error));
-  });
+app.controller("StandingsController", function($scope, $http) {
+  const apiUrl = "https://ergast.com/api/f1/current/constructorStandings.json";
+  $http.get(apiUrl)
+    .then(response => {
+      $scope.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+    })
+    .catch(error => console.error(error));
+});
