@@ -1,24 +1,33 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h1, h2 {
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-
-th {
-    background-color: #ddd;
+  }
+  
+  h1 {
+    margin-top: 40px;
+  }
+  
+  #drivers-standings,
+  #constructors-standings {
+    display: inline-block;
+    width: 45%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .table-header {
     font-weight: bold;
-}
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .table-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

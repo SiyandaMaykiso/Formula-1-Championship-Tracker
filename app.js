@@ -1,37 +1,94 @@
-var app = angular.module("f1TrackerApp", []);
+const API_URL =
+  "https://ergast.com/api/f1/current/driverStandings.json?limit=10";
+const API_CONSTRUCTORS_URL =
+  "https://ergast.com/api/f1/current/constructorStandings.json?limit=10";
 
-app.controller("f1TrackerCtrl", function($scope, $http) {
-    // API endpoint URLs
-    var driversStandingsURL = 'http://ergast.com/api/f1/current/driverStandings';
-    var constructorsStandingsURL = 'http://ergast.com/api/f1/current/constructorStandings';
+async function getDriverStandings() {
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    return data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-    // Initialize standings arrays
-    $scope.driversStandings = [];
-    $scope.constructorsStandings = [];
+async function getConstructorStandings() {
+  try {
+    const response = await fetch(API_CONSTRUCTORS_URL);
+    const data = await response.json();
+    return data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-    // Get drivers championship standings
-    $http.get(driversStandingsURL).then(function(response) {
-        var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-        for (var i = 0; i < standingsData.length; i++) {
-            var position = standingsData[i].position;
-            var driverName = standingsData[i].Driver.givenName + " " + standingsData[i].Driver.familyName;
-            var points = standingsData[i].points;
-            $scope.driversStandings.push({position: position, driverName: driverName, points: points});
-        }
-    }, function(error) {
-        console.error("Error fetching drivers championship standings: ", error);
-    });
+function createTableHeader() {
+  const row = document.createElement("div");
+  row.classList.add("table-row");
+  const position = document.createElement("div");
+  position.classList.add("table-header");
+  position.textContent = "Position";
+  const name = document.createElement("div");
+  name.classList.add("table-header");
+  name.textContent = "Name";
+  const points = document.createElement("div");
+  points.classList.add("table-header");
+  points.textContent = "Points";
+  row.appendChild(position);
+  row.appendChild(name);
+  row.appendChild(points);
+  return row;
+}
 
-    // Get constructors championship standings
-    $http.get(constructorsStandingsURL).then(function(response) {
-        var standingsData = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-        for (var i = 0; i < standingsData.length; i++) {
-            var position = standingsData[i].position;
-            var constructorName = standingsData[i].Constructor.name;
-            var points = standingsData[i].points;
-            $scope.constructorsStandings.push({position: position, constructorName: constructorName, points: points});
-        }
-    }, function(error) {
-        console.error("Error fetching constructors championship standings: ", error);
-    });
-});
+function createTableRow(position, name, points) {
+  const row = document.createElement("div");
+  row.classList.add("table-row");
+  const positionCell = document.createElement("div");
+  positionCell.textContent = position;
+  const nameCell = document.createElement("div");
+  nameCell.textContent = name;
+  const pointsCell = document.createElement("div");
+  pointsCell.textContent = points;
+  row.appendChild(positionCell);
+  row.appendChild(nameCell);
+  row.appendChild(pointsCell);
+  return row;
+}
+
+async function displayDriverStandings() {
+  const driverStandings = await getDriverStandings();
+  const container = document.createElement("div");
+  container.id = "drivers-standings";
+  const headerRow = createTableHeader();
+  container.appendChild(headerRow);
+  driverStandings.forEach((driver) => {
+    const row = createTableRow(
+      driver.position,
+      `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+      driver.points
+    );
+    container.appendChild(row);
+  });
+  document.body.appendChild(container);
+}
+
+async function displayConstructorStandings() {
+  const constructorStandings = await getConstructorStandings();
+  const container = document.createElement("div");
+  container.id = "constructors-standings";
+  const headerRow = createTableHeader();
+  container.appendChild(headerRow);
+  constructorStandings.forEach((constructor) => {
+    const row = createTableRow(
+      constructor.position,
+      constructor.Constructor.name,
+      constructor.points
+    );
+    container.appendChild(row);
+  });
+  document.body.appendChild(container);
+}
+
+displayDriverStandings();
+displayConstructorStandings();

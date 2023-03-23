@@ -1,45 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Formula 1 Championship Tracker</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Formula 1 Championship Tracker</h1>
-        <div class="DriverStandings">
-            <h2>Drivers Championship Standings</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Driver</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Drivers championship standings will be dynamically generated here -->
-                </tbody>
-            </table>
-        </div>
-        <div class="ConstructorStandings">
-            <h2>Constructors Championship Standings</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Team</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Constructors championship standings will be dynamically generated here -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formula 1 Standings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Formula 1 Standings</h1>
+    <div id="drivers-standings"></div>
+    <div id="constructors-standings"></div>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
