@@ -1,7 +1,7 @@
 const API_URL =
-  "https://ergast.com/api/f1/current/driverStandings.json?limit=10";
+  "https://ergast.com/api/f1/current/driverStandings.json";
 const API_CONSTRUCTORS_URL =
-  "https://ergast.com/api/f1/current/constructorStandings.json?limit=10";
+  "https://ergast.com/api/f1/current/constructorStandings.json";
 
 async function getDriverStandings() {
   try {
