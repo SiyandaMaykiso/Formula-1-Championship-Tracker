@@ -1,14 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8">
     <title>Formula 1 Standings</title>
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Table styles */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* Other styles */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .driver-standings {
+        margin-bottom: 50px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Formula 1 Standings</h1>
-    <div id="drivers-standings"></div>
-    <div id="constructors-standings"></div>
+    <div class="container">
+      <h1>Formula 1 Standings</h1>
+
+      <h2>Driver Standings</h2>
+      <div class="driver-standings">
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Name</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody id="driver-standings-table">
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Constructor Standings</h2>
+      <div class="constructor-standings">
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Name</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody id="constructor-standings-table">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <script src="app.js"></script>
   </body>
+</html>
+
+  <link rel="stylesheet" href="styles.css" />
+
 </html>
